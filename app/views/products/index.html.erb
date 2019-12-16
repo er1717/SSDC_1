@@ -1,8 +1,69 @@
-<p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<div class="navbar jumbotron navbar-dark bg-dark shadow-sm">
+  <img src="../../assets/name_logo.png">
+</div>
+<section class="modal-footer"></section>
+<div class="custom-range::-moz-range-track"></div>
 
-<div> <%= link_to 'Launch Calclulator', new_product_path %> </div>
+<div class="container text-center">
+ <h1> <%= link_to 'Launch Calclulator', '#', data: {toggle: "modal", target: "#calculatorModal"} %> </h1>
+</div>
+
+<div class="container text-center">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#calculatorModal">
+    Launch Calclulator
+  </button>
+</div>
+
+<div class="container text-center">
+  <textarea> <%= debug(@results) %>  </textarea>
+</div>
+<div class="container text-center">
+  <textarea> <%= @length %>  </textarea>
+</div>
+<div class="modal fade" id="calculatorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title container text-center" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <form action="/products/search" method="post">
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="input_length">Length</label>
+              <input type="text" class="form-control" id="input_length1" name="length" placeholder="Length">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="input_width">Width</label>
+              <input type="text" class="form-control" id="input_width1" name="width" placeholder="Width">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="input_height">Height</label>
+              <input type="text" class="form-control" id="input_height" name="height" placeholder="Height">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="input_wieght">Weight</label>
+              <input type="text" class="form-control" id="input_weight" name="weight" placeholder="Weight">
+            </div>
+          </div>
+
+          <div class="container text-center">
+            <button type="submit" class="btn btn-primary">Calculate</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

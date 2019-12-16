@@ -1,10 +1,19 @@
 class ProductsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    #@products = Product.all
+    @results = ''
+    if params[:results].present?
+      @results = params[:results]
+    end
+    @length = ''
+    if params[:length].present?
+      @length = params[:length]
+    end
   end
 
   # GET /products/1
@@ -68,10 +77,10 @@ class ProductsController < ApplicationController
     # if results[0].present?
     #   results[0].modifiers.compact!
     # end
-    results = Product.all
+    @results = Product.where('length <= ?', params[:length])
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Selected Products' }
-      format.json { head :no_content }
+      format.html { redirect_to products_url(params: {results: @results, length: params[:length]}), notice: 'Selected Products', results: @results, length: params[:length] }
+      #format.json { head :no_content }
     end
   end
 

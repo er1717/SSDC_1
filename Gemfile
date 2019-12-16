@@ -5,7 +5,7 @@ ruby '2.5.5'
 
 gem 'bootstrap', '~> 4.4.1'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2'
